@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  database:
+    container_name: 'database-verx-challenge'
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      - verx-challenge
+
+networks:
+  verx-challenge:
+    driver: bridge
