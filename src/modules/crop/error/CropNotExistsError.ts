@@ -1,4 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
+
 import { CropErrorMessages } from '@shared/messages/error';
 import { ApplicationError } from '@shared/types/ApplicationError';
 

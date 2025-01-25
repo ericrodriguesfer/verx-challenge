@@ -5,6 +5,7 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 
 import { Env } from '@config/environment/env';
 import { CropModule } from '@modules/crop/crop.module';
+import { HarvestModule } from '@modules/harvest/harvest.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CropModule } from '@modules/crop/crop.module';
       },
     }),
     CropModule,
+    HarvestModule,
   ],
   controllers: [],
   providers: [],

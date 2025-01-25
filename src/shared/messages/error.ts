@@ -5,3 +5,7 @@ export enum ApplicationsErrorMessages {
 export enum CropErrorMessages {
   CROP_NOT_EXISTS = 'Crop does not exists.',
 }
+
+export enum HarvestErrorMessages {
+  HARVEST_NOT_EXISTS = 'Harvest does not exists.',
+}
