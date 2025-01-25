@@ -42,7 +42,9 @@ export class Harvest {
   @ApiProperty({ type: 'string' })
   deletedAt?: Date;
 
-  @OneToMany(() => RuralPropertie, (ruralPropertie) => ruralPropertie.harvest)
+  @OneToMany(() => RuralPropertie, (ruralPropertie) => ruralPropertie.harvest, {
+    eager: false,
+  })
   ruralProperties = new Collection<RuralPropertie>(this);
 
   [EntityRepositoryType]?: HarvestRepository;

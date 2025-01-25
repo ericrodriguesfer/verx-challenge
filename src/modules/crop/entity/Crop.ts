@@ -42,7 +42,9 @@ export class Crop {
   @ApiProperty({ type: 'string' })
   deletedAt?: Date;
 
-  @OneToMany(() => CropsPlanted, (cropsPlanted) => cropsPlanted.crop)
+  @OneToMany(() => CropsPlanted, (cropsPlanted) => cropsPlanted.crop, {
+    eager: false,
+  })
   cropsPlanted = new Collection<CropsPlanted>(this);
 
   [EntityRepositoryType]?: CropRepository;
