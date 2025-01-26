@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 import { CropController } from './controller/Crop.controller';
-import { GetCropByUuidUseCase } from './use-case/implementation/GetCropByUuidUseCase';
 import { Crop } from './entity/Crop';
 import { ListAllCropsUseCase } from './use-case/implementation/ListAllCropsUseCase';
 import { CropsPlanted } from './entity/CropsPlanted';
@@ -12,12 +11,7 @@ import { ValidateCropsProvider } from './provider/get-crops/implementation/Valid
 @Module({
   imports: [MikroOrmModule.forFeature([Crop, CropsPlanted])],
   controllers: [CropController],
-  providers: [
-    GetCropByUuidUseCase,
-    ListAllCropsUseCase,
-    ValidateCropsProvider,
-    GetCropsProvider,
-  ],
+  providers: [ListAllCropsUseCase, ValidateCropsProvider, GetCropsProvider],
   exports: [ValidateCropsProvider, GetCropsProvider],
 })
 export class CropModule {}
