@@ -11,6 +11,7 @@ const envSchema = z.object({
   DB_PASS: z.string(),
   DB_NAME: z.string(),
   DB_PORT: z.string(),
+  PORT: z.string().default('5000'),
   NODE_ENV: nodeEnv.default('development').optional(),
 });
 

@@ -7,6 +7,7 @@ import { Env } from '@config/environment/env';
 import { CropModule } from '@modules/crop/crop.module';
 import { HarvestModule } from '@modules/harvest/harvest.module';
 import { ProducerModule } from '@modules/producer/producer.module';
+import { RuralPropertieModule } from '@modules/rural_propertie/rural_propertie.module';
 
 @Module({
   imports: [
@@ -27,9 +28,10 @@ import { ProducerModule } from '@modules/producer/producer.module';
         idleTimeoutMillis: 15000,
       },
     }),
-    CropModule,
     HarvestModule,
     ProducerModule,
+    RuralPropertieModule,
+    CropModule,
   ],
   controllers: [],
   providers: [],

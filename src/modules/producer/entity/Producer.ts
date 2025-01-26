@@ -15,13 +15,13 @@ import { ProducerRepository } from '../repository/implementation/ProducerReposit
 
 @Entity({ repository: () => ProducerRepository })
 export class Producer {
-  @PrimaryKey()
   @ApiProperty({ type: 'number' })
-  id!: number;
+  @PrimaryKey()
+  id?: number;
 
-  @Property({ type: 'uuid' })
   @Unique()
   @ApiProperty({ type: 'string' })
+  @Property({ type: 'uuid', onCreate: () => uuid() })
   uuid: string = uuid();
 
   @Property()
@@ -29,24 +29,28 @@ export class Producer {
   @ApiProperty({ type: 'string' })
   cprOrCnpj!: string;
 
-  @Property()
   @ApiProperty({ type: 'string' })
+  @Property({ type: 'string' })
   name!: string;
 
-  @Property({ type: 'timestamp', defaultRaw: 'CURRENT_TIMESTAMP' })
   @ApiProperty({ type: 'string' })
-  createdAt: Date = new Date();
+  @Property({
+    type: 'timestamp',
+    onCreate: () => new Date(),
+    defaultRaw: 'CURRENT_TIMESTAMP',
+  })
+  createdAt?: Date = new Date();
 
+  @ApiProperty({ type: 'string' })
   @Property({
     type: 'timestamp',
     onUpdate: () => new Date(),
     defaultRaw: 'CURRENT_TIMESTAMP',
   })
-  @ApiProperty({ type: 'string' })
-  updatedAt: Date = new Date();
+  updatedAt?: Date = new Date();
 
-  @Property({ type: 'timestamp', nullable: true })
   @ApiProperty({ type: 'string' })
+  @Property({ type: 'timestamp', nullable: true })
   deletedAt?: Date;
 
   @OneToMany(() => RuralPropertie, (property) => property.producer, {

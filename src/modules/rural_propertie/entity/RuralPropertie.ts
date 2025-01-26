@@ -6,6 +6,7 @@ import {
   OneToMany,
   Collection,
   Unique,
+  EntityRepositoryType,
 } from '@mikro-orm/core';
 import { v4 as uuid } from 'uuid';
 import { ApiProperty } from '@nestjs/swagger';
@@ -13,45 +14,50 @@ import { ApiProperty } from '@nestjs/swagger';
 import { CropsPlanted } from '@modules/crop/entity/CropsPlanted';
 import { Harvest } from '@modules/harvest/entity/Harvest';
 import { Producer } from '@modules/producer/entity/Producer';
+import { RuralPropertieRepository } from '../repository/implementation/RuralPropertieRepository';
 
-@Entity()
+@Entity({ repository: () => RuralPropertieRepository })
 export class RuralPropertie {
-  @PrimaryKey()
   @ApiProperty({ type: 'number' })
-  id!: number;
+  @PrimaryKey()
+  id?: number;
 
-  @Property({ type: 'uuid' })
-  @Unique()
   @ApiProperty({ type: 'string' })
+  @Property({ type: 'uuid', onCreate: () => uuid() })
+  @Unique()
   uuid: string = uuid();
 
-  @Property()
   @ApiProperty({ type: 'string' })
+  @Property()
   name!: string;
 
-  @Property()
   @ApiProperty({ type: 'string' })
+  @Property()
   city!: string;
 
-  @Property()
   @ApiProperty({ type: 'string' })
+  @Property()
   state!: string;
 
-  @Property({ type: 'decimal', precision: 20, scale: 2 })
   @ApiProperty({ type: 'number' })
+  @Property({ type: 'decimal', precision: 20, scale: 2 })
   totalAreaFarm!: number;
 
-  @Property({ type: 'decimal', precision: 20, scale: 2 })
   @ApiProperty({ type: 'number' })
+  @Property({ type: 'decimal', precision: 20, scale: 2 })
   arableArea!: number;
 
-  @Property({ type: 'decimal', precision: 20, scale: 2 })
   @ApiProperty({ type: 'number' })
+  @Property({ type: 'decimal', precision: 20, scale: 2 })
   vegetationArea!: number;
 
-  @Property({ type: 'timestamp', defaultRaw: 'CURRENT_TIMESTAMP' })
   @ApiProperty({ type: 'string' })
-  createdAt: Date = new Date();
+  @Property({
+    type: 'timestamp',
+    onCreate: () => new Date(),
+    defaultRaw: 'CURRENT_TIMESTAMP',
+  })
+  createdAt?: Date = new Date();
 
   @Property({
     type: 'timestamp',
@@ -59,7 +65,7 @@ export class RuralPropertie {
     defaultRaw: 'CURRENT_TIMESTAMP',
   })
   @ApiProperty({ type: 'string' })
-  updatedAt: Date = new Date();
+  updatedAt?: Date = new Date();
 
   @Property({ type: 'timestamp', nullable: true })
   @ApiProperty({ type: 'string' })
@@ -77,4 +83,6 @@ export class RuralPropertie {
     { eager: false },
   )
   cropsPlanted = new Collection<CropsPlanted>(this);
+
+  [EntityRepositoryType]?: RuralPropertieRepository;
 }

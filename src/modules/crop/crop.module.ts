@@ -5,10 +5,19 @@ import { CropController } from './controller/Crop.controller';
 import { GetCropByUuidUseCase } from './use-case/implementation/GetCropByUuidUseCase';
 import { Crop } from './entity/Crop';
 import { ListAllCropsUseCase } from './use-case/implementation/ListAllCropsUseCase';
+import { CropsPlanted } from './entity/CropsPlanted';
+import { GetCropsProvider } from './provider/get-crops/implementation/GetCropsProviders';
+import { ValidateCropsProvider } from './provider/get-crops/implementation/ValidateCropsProvider';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([Crop])],
+  imports: [MikroOrmModule.forFeature([Crop, CropsPlanted])],
   controllers: [CropController],
-  providers: [GetCropByUuidUseCase, ListAllCropsUseCase],
+  providers: [
+    GetCropByUuidUseCase,
+    ListAllCropsUseCase,
+    ValidateCropsProvider,
+    GetCropsProvider,
+  ],
+  exports: [ValidateCropsProvider, GetCropsProvider],
 })
 export class CropModule {}

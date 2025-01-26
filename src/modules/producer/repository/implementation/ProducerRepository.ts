@@ -12,4 +12,10 @@ export class ProducerRepository
 
     return Optional.create<Producer>(producer as Producer);
   }
+
+  async findByCpfOrCnpj(cpfOrCnpj: string): Promise<Optional<Producer>> {
+    const producer = await this.findOne({ cprOrCnpj: cpfOrCnpj });
+
+    return Optional.create<Producer>(producer as Producer);
+  }
 }

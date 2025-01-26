@@ -7,8 +7,8 @@ export class HarvestRepository
   extends EntityRepository<Harvest>
   implements IHarvestRepository
 {
-  async findById(id: number): Promise<Optional<Harvest>> {
-    const harvest = await this.findOne({ id });
+  async findByUuid(uuid: string): Promise<Optional<Harvest>> {
+    const harvest = await this.findOne({ uuid });
 
     return Optional.create<Harvest>(harvest as Harvest);
   }
