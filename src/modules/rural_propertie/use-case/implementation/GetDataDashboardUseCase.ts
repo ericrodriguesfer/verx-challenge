@@ -17,6 +17,9 @@ export class GetDataDashboardUseCase implements IGetDataDashboardUseCase {
       await this.ruralPropertieRepository.getTotalRuralPropertiesAndHectares();
     const dataPieChart = await this.ruralPropertieRepository.getPieChartData();
 
-    return buildSuccess({ ...totalValues.get(), ...dataPieChart.get() });
+    return buildSuccess({
+      values: totalValues.get(),
+      pieData: dataPieChart.get(),
+    });
   }
 }

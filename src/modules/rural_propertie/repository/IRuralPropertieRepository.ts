@@ -19,5 +19,5 @@ export interface IRuralPropertieRepository {
   getTotalRuralPropertiesAndHectares(): Promise<
     Optional<TotalRuralPropertiesAndHectares>
   >;
-  getPieChartData(): Promise<Optional<PieChartData>>;
+  getPieChartData(): Promise<Optional<PieChartData[]>>;
 }

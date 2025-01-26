@@ -6,7 +6,7 @@ export class CreateCropsPlantedError extends ApplicationError {
   constructor() {
     const message = CropErrorMessages.FAILURE_CRATE_CROPS_PLANTED;
     const error = CropErrorMessages.FAILURE_CRATE_CROPS_PLANTED;
-    const code = HttpStatus.NOT_FOUND;
+    const code = HttpStatus.BAD_REQUEST;
 
     super(message, code, error);
   }

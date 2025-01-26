@@ -6,7 +6,7 @@ export class CreateRuralPropertieError extends ApplicationError {
   constructor() {
     const message = RuralPropertieErrorMessages.FAILURE_CRATE_PURAL_PROPERTIE;
     const error = RuralPropertieErrorMessages.FAILURE_CRATE_PURAL_PROPERTIE;
-    const code = HttpStatus.NOT_FOUND;
+    const code = HttpStatus.BAD_REQUEST;
 
     super(message, code, error);
   }

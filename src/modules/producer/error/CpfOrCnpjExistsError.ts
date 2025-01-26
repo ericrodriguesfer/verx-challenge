@@ -6,7 +6,7 @@ export class CpfOrCnpjExistsError extends ApplicationError {
   constructor() {
     const message = ProducerErrorMessages.CPF_CNPJ_EXISTS;
     const error = ProducerErrorMessages.CPF_CNPJ_EXISTS;
-    const code = HttpStatus.NOT_FOUND;
+    const code = HttpStatus.BAD_REQUEST;
 
     super(message, code, error);
   }

@@ -1,12 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class DashboardDataDTO {
+class TotalValuesDashboardDTO {
   @ApiProperty({ type: 'number' })
   totalRuralProperties: number;
 
   @ApiProperty({ type: 'number' })
   totalHectares: number;
+}
 
+class PieDataDashboarDTO {
   @ApiProperty({ type: 'string' })
   state: string;
 
@@ -18,4 +20,12 @@ export class DashboardDataDTO {
 
   @ApiProperty({ type: 'number' })
   totalVegetationArea: number;
+}
+
+export class DashboardDataDTO {
+  @ApiProperty({ type: () => TotalValuesDashboardDTO })
+  values: TotalValuesDashboardDTO;
+
+  @ApiProperty({ type: () => PieDataDashboarDTO })
+  pieData: PieDataDashboarDTO[];
 }

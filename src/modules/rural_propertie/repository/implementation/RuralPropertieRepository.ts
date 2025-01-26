@@ -40,8 +40,8 @@ export class RuralPropertieRepository
     );
   }
 
-  async getPieChartData(): Promise<Optional<PieChartData>> {
-    const [result] = await this.getEntityManager().execute(`
+  async getPieChartData(): Promise<Optional<PieChartData[]>> {
+    const result = await this.getEntityManager().execute(`
       SELECT
         rp.state AS state,
         c.name AS crop,
@@ -58,6 +58,6 @@ export class RuralPropertieRepository
       ORDER BY
         rp.state ASC, c.name ASC;`);
 
-    return Optional.create<PieChartData>(result as PieChartData);
+    return Optional.create<PieChartData[]>(result as PieChartData[]);
   }
 }
