@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+
 import { Crop } from '../entity/Crop';
 import { ApplicationError } from '@shared/types/ApplicationError';
 import { ListAllCropsUseCase } from '../use-case/implementation/ListAllCropsUseCase';
-import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CropControllerMessages } from '@shared/messages/flow';
 
 @ApiTags('crop')
 @Controller('crop')
 export class CropController {
+  private readonly logger = new Logger(CropController.name);
+
   constructor(private readonly listAllCropsUseCase: ListAllCropsUseCase) {}
 
   @Get('')
@@ -19,6 +23,8 @@ export class CropController {
     isArray: true,
   })
   async listAllCrops(): Promise<Crop[] | ApplicationError> {
+    this.logger.debug(CropControllerMessages.ROUTE_LIST_ALL_CROPS_CALLED);
+
     const result = await this.listAllCropsUseCase.execute();
 
     if (result.isLeft()) {

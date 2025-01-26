@@ -1,4 +1,3 @@
-import { IsCpfOrCnpj } from '@config/decorators/IsCpfOrCnpjValidator';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsArray,
@@ -10,6 +9,8 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+
+import { IsCpfOrCnpj } from '@config/decorators/IsCpfOrCnpjValidator';
 
 export class UpdateProducerDTO {
   @ApiProperty({ type: 'string' })

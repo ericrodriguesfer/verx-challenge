@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Logger,
   Param,
   ParseUUIDPipe,
   Post,
@@ -17,20 +18,23 @@ import {
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
+
 import { ListAllProducersUseCase } from '../use-case/implementation/ListAllProducersUseCase';
 import { Producer } from '../entity/Producer';
 import { ApplicationError } from '@shared/types/ApplicationError';
 import { CreateProducerUseCase } from '../use-case/implementation/CreateProducerUseCase';
 import { CreateProducerDTO } from '../dto/CreateProducerDTO';
 import { DeleteProducerUseCase } from '../use-case/implementation/DeleteProducerUseCase';
-import { boolean } from 'zod';
 import { UpdateProducerDTO } from '../dto/UpdateProducerDTO';
 import { UpdateProducerUseCase } from '../use-case/implementation/UpdateProducerUseCase';
 import { UUIDQueryParamsPipe } from '@config/decorators/UUIDQueryParamsPipe';
+import { ProducerControllerMessages } from '@shared/messages/flow';
 
 @ApiTags('producer')
 @Controller('producer')
 export class ProducerController {
+  private readonly logger = new Logger(ProducerController.name);
+
   constructor(
     private readonly listAllProducersUseCase: ListAllProducersUseCase,
     private readonly crateProducerUseCase: CreateProducerUseCase,
@@ -48,6 +52,10 @@ export class ProducerController {
     isArray: true,
   })
   async listAllProducers(): Promise<Producer[] | ApplicationError> {
+    this.logger.debug(
+      ProducerControllerMessages.ROUTE_LIST_ALL_PRODUCERS_CALLED,
+    );
+
     const result = await this.listAllProducersUseCase.execute();
 
     if (result.isLeft()) {
@@ -69,6 +77,8 @@ export class ProducerController {
   async createProducer(
     @Body() createProducer: CreateProducerDTO,
   ): Promise<Producer | ApplicationError> {
+    this.logger.debug(ProducerControllerMessages.ROUTE_CREATE_PRODUCER_CALLED);
+
     const result = await this.crateProducerUseCase.execute({
       ...createProducer,
     });
@@ -103,6 +113,8 @@ export class ProducerController {
     @Query('ruralPropertieUuid', new ValidationPipe({ transform: true }))
     ruralPropertieUuid?: string,
   ): Promise<Producer | ApplicationError> {
+    this.logger.debug(ProducerControllerMessages.ROUTE_UPDATE_PRODUCER_CALLED);
+
     const result = await this.updateProducerUseCase.execute({
       ...updateProducer,
       producerUuid,
@@ -123,11 +135,13 @@ export class ProducerController {
   })
   @ApiOkResponse({
     description: 'Returnig if producer deleted with success.',
-    type: boolean,
+    type: Boolean,
   })
   async deleteProducer(
     @Param('uuid', new ParseUUIDPipe({ version: '4' })) uuid: string,
   ): Promise<boolean | ApplicationError> {
+    this.logger.debug(ProducerControllerMessages.ROUTE_DELETE_PRODUCER_CALLED);
+
     const result = await this.deleteProducerUseCase.execute({ uuid });
 
     if (result.isLeft()) {

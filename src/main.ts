@@ -1,16 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import log from 'npmlog';
+import { ConsoleLogger, Logger, ValidationPipe } from '@nestjs/common';
 
 import { AppModule } from '@app/app.module';
 import { swagger } from '@config/swagger/Swagger';
-import { Prefix } from '@shared/constants/prefix';
-import { ApplicationsFlowMessages } from '@shared/messages/flow';
-import { ApplicationsErrorMessages } from '@shared/messages/error';
 import { Env } from '@config/environment/env';
-import { ValidationPipe } from '@nestjs/common';
+import { ApplicationsErrorMessages } from '@shared/messages/error';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: new ConsoleLogger({
+      colors: true,
+      prefix: 'VERX-CHALLENGE',
+    }),
+  });
   swagger.setup(app);
 
   app.useGlobalPipes(
@@ -22,9 +24,10 @@ async function bootstrap() {
   );
 
   await app.listen(Env.PORT ?? 3000);
-  log.info(Prefix.APPLICATION, ApplicationsFlowMessages.INIT_SUCCESS);
 }
 
+const logger = new Logger('Main');
+
 bootstrap().catch((error: Error) =>
-  log.error(Prefix.APPLICATION, ApplicationsErrorMessages.INIT_ERROR, error),
+  logger.error(ApplicationsErrorMessages.INIT_ERROR, error),
 );

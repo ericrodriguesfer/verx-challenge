@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing';
+import { Collection } from '@mikro-orm/core';
+
 import { CreateProducerUseCase } from './CreateProducerUseCase';
 import { ProducerRepository } from '@modules/producer/repository/implementation/ProducerRepository';
 import { RuralPropertieRepository } from '@modules/rural_propertie/repository/implementation/RuralPropertieRepository';
@@ -18,7 +20,6 @@ import { ValidateAreasError } from '@modules/rural_propertie/error/ValidateAreas
 import { Crop } from '@modules/crop/entity/Crop';
 import { Harvest } from '@modules/harvest/entity/Harvest';
 import { RuralPropertie } from '@modules/rural_propertie/entity/RuralPropertie';
-import { Collection } from '@mikro-orm/core';
 import { Optional } from '@shared/types/Optional';
 import { CreateRuralPropertieError } from '@modules/rural_propertie/error/CreateRuralPropertieError';
 import { CreateCropsPlantedError } from '@modules/crop/error/CreateCropsPlantedError';

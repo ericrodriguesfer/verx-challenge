@@ -2,6 +2,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
+
 import { RuralPropertieController } from './RuralPropertie.controller';
 import { GetDataDashboardUseCase } from '../use-case/implementation/GetDataDashboardUseCase';
 import { buildSuccess } from '@shared/utils/buildSuccess';

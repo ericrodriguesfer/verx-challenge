@@ -1,4 +1,5 @@
 import { EntityRepository } from '@mikro-orm/postgresql';
+
 import { RuralPropertie } from '@modules/rural_propertie/entity/RuralPropertie';
 import {
   IRuralPropertieRepository,

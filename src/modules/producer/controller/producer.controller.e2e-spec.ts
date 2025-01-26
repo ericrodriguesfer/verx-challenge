@@ -2,6 +2,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
+
 import { ProducerController } from './Producer.controller';
 import { ListAllProducersUseCase } from '../use-case/implementation/ListAllProducersUseCase';
 import { CreateProducerUseCase } from '../use-case/implementation/CreateProducerUseCase';

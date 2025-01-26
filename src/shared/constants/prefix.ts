@@ -1,5 +1,0 @@
-export enum Prefix {
-  CONTROLLER = 'CONTROLLER',
-  SERVICE = 'SERVICE',
-  APPLICATION = 'APPLICATION',
-}

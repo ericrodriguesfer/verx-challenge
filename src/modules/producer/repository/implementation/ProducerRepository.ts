@@ -1,7 +1,8 @@
+import { EntityRepository } from '@mikro-orm/postgresql';
+
 import { Producer } from '@modules/producer/entity/Producer';
 import { Optional } from '@shared/types/Optional';
 import { IProducerRepository } from '../IProducerRepository';
-import { EntityRepository } from '@mikro-orm/postgresql';
 
 export class ProducerRepository
   extends EntityRepository<Producer>

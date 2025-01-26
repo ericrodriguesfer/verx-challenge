@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { UpdateProducerUseCase } from './UpdateProducerUseCase';
 import { ProducerRepository } from '@modules/producer/repository/implementation/ProducerRepository';
 import { RuralPropertieRepository } from '@modules/rural_propertie/repository/implementation/RuralPropertieRepository';

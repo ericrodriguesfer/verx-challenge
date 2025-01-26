@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { GetDataDashboardUseCase } from './GetDataDashboardUseCase';
 import { RuralPropertieRepository } from '@modules/rural_propertie/repository/implementation/RuralPropertieRepository';
 import { buildSuccess } from '@shared/utils/buildSuccess';

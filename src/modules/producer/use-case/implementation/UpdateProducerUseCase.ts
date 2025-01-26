@@ -1,9 +1,10 @@
+import { Inject, Injectable } from '@nestjs/common';
+
 import {
   IUpdateProducerInput,
   IUpdateProducerOutput,
   IUpdateProducerUseCase,
 } from '../IUpdateProducerUseCase';
-import { Inject, Injectable } from '@nestjs/common';
 import { ProducerRepository } from '@modules/producer/repository/implementation/ProducerRepository';
 import { CropsPlantedRepository } from '@modules/crop/repository/implementation/CropsPlantedRepository';
 import { HarvestRepository } from '@modules/harvest/repository/implementation/HarvestRepository';

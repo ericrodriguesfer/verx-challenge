@@ -1,9 +1,10 @@
+import { Inject, Injectable } from '@nestjs/common';
+
 import { CreateProducerDTO } from '@modules/producer/dto/CreateProducerDTO';
 import {
   ICreateProducerOutput,
   ICreateProducerUseCase,
 } from '../ICreateProducerUseCase';
-import { Inject, Injectable } from '@nestjs/common';
 import { ProducerRepository } from '@modules/producer/repository/implementation/ProducerRepository';
 import { HarvestRepository } from '@modules/harvest/repository/implementation/HarvestRepository';
 import { RuralPropertieRepository } from '@modules/rural_propertie/repository/implementation/RuralPropertieRepository';
@@ -17,7 +18,6 @@ import { CreateCropsPlantedError } from '@modules/crop/error/CreateCropsPlantedE
 import { ValidateAreasError } from '@modules/rural_propertie/error/ValidateAreasError';
 import { CreateRuralPropertieError } from '@modules/rural_propertie/error/CreateRuralPropertieError';
 import { Producer } from '@modules/producer/entity/Producer';
-
 import { ValidateCropsProvider } from '@modules/crop/provider/get-crops/implementation/ValidateCropsProvider';
 import { IValidateCropsProvider } from '@modules/crop/provider/get-crops/IValidateCropsProvider';
 import { ValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/implementation/ValidateAreasProvider';

@@ -1,4 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
+
 import { ProducerErrorMessages } from '@shared/messages/error';
 import { ApplicationError } from '@shared/types/ApplicationError';
 

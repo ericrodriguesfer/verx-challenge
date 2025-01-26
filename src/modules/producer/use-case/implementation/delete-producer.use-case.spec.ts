@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing';
-
 import { EntityManager } from '@mikro-orm/core';
+
 import { DeleteProducerUseCase } from './DeleteProducerUseCase';
 import { ProducerRepository } from '@modules/producer/repository/implementation/ProducerRepository';
 import { Optional } from '@shared/types/Optional';
