@@ -7,7 +7,7 @@ import { RuralPropertieRepository } from '@modules/rural_propertie/repository/im
 import { HarvestRepository } from '@modules/harvest/repository/implementation/HarvestRepository';
 import { CropsPlantedRepository } from '@modules/crop/repository/implementation/CropsPlantedRepository';
 import { GetCropsProvider } from '@modules/crop/provider/get-crops/implementation/GetCropsProviders';
-import { ValidateCropsProvider } from '@modules/crop/provider/get-crops/implementation/ValidateCropsProvider';
+import { ValidateCropsProvider } from '@modules/crop/provider/validate-crops/implementation/ValidateCropsProvider';
 import { ValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/implementation/ValidateAreasProvider';
 import { buildError } from '@shared/utils/buildError';
 import { buildSuccess } from '@shared/utils/buildSuccess';

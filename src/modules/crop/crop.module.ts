@@ -6,7 +6,7 @@ import { Crop } from './entity/Crop';
 import { ListAllCropsUseCase } from './use-case/implementation/ListAllCropsUseCase';
 import { CropsPlanted } from './entity/CropsPlanted';
 import { GetCropsProvider } from './provider/get-crops/implementation/GetCropsProviders';
-import { ValidateCropsProvider } from './provider/get-crops/implementation/ValidateCropsProvider';
+import { ValidateCropsProvider } from './provider/validate-crops/implementation/ValidateCropsProvider';
 
 @Module({
   imports: [MikroOrmModule.forFeature([Crop, CropsPlanted])],

@@ -3,7 +3,7 @@ export enum CropControllerMessages {
 }
 
 export enum HarvestControllerMessages {
-  ROUTE_LIST_ALL_HARVESTS_CALLED = '[GET -harvest/] Route list all harvests called',
+  ROUTE_LIST_ALL_HARVESTS_CALLED = '[GET - harvest/] Route list all harvests called',
 }
 
 export enum ProducerControllerMessages {

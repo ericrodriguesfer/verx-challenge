@@ -18,8 +18,8 @@ import { CreateCropsPlantedError } from '@modules/crop/error/CreateCropsPlantedE
 import { ValidateAreasError } from '@modules/rural_propertie/error/ValidateAreasError';
 import { CreateRuralPropertieError } from '@modules/rural_propertie/error/CreateRuralPropertieError';
 import { Producer } from '@modules/producer/entity/Producer';
-import { ValidateCropsProvider } from '@modules/crop/provider/get-crops/implementation/ValidateCropsProvider';
-import { IValidateCropsProvider } from '@modules/crop/provider/get-crops/IValidateCropsProvider';
+import { ValidateCropsProvider } from '@modules/crop/provider/validate-crops/implementation/ValidateCropsProvider';
+import { IValidateCropsProvider } from '@modules/crop/provider/validate-crops/IValidateCropsProvider';
 import { ValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/implementation/ValidateAreasProvider';
 import { IValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/IValidateAreasProvider';
 import { GetCropsProvider } from '@modules/crop/provider/get-crops/implementation/GetCropsProviders';

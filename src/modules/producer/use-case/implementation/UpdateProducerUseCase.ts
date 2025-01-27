@@ -15,8 +15,8 @@ import { CpfOrCnpjExistsError } from '@modules/producer/error/CpfOrCnpjExistsErr
 import { RuralPropertieNotExistsError } from '@modules/rural_propertie/error/RuralPropertieNotExistsError';
 import { IGetCropsProvider } from '@modules/crop/provider/get-crops/IGetCropsProvider';
 import { GetCropsProvider } from '@modules/crop/provider/get-crops/implementation/GetCropsProviders';
-import { ValidateCropsProvider } from '@modules/crop/provider/get-crops/implementation/ValidateCropsProvider';
-import { IValidateCropsProvider } from '@modules/crop/provider/get-crops/IValidateCropsProvider';
+import { ValidateCropsProvider } from '@modules/crop/provider/validate-crops/implementation/ValidateCropsProvider';
+import { IValidateCropsProvider } from '@modules/crop/provider/validate-crops/IValidateCropsProvider';
 import { ValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/implementation/ValidateAreasProvider';
 import { IValidateAreasProvider } from '@modules/rural_propertie/provider/validate-areas/IValidateAreasProvider';
 import { ValidateAreasError } from '@modules/rural_propertie/error/ValidateAreasError';
