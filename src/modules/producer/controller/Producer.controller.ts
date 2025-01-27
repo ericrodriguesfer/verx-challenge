@@ -13,6 +13,8 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiQuery,
@@ -29,6 +31,21 @@ import { UpdateProducerDTO } from '../dto/UpdateProducerDTO';
 import { UpdateProducerUseCase } from '../use-case/implementation/UpdateProducerUseCase';
 import { UUIDQueryParamsPipe } from '@config/decorators/UUIDQueryParamsPipe';
 import { ProducerControllerMessages } from '@shared/messages/flow';
+import { CreateProducerError } from '../error/CreateProducerError';
+import {
+  CropErrorMessages,
+  HarvestErrorMessages,
+  ProducerErrorMessages,
+  RuralPropertieErrorMessages,
+} from '@shared/messages/error';
+import { ValidateAreasError } from '@modules/rural_propertie/error/ValidateAreasError';
+import { HarvestNotExistsError } from '@modules/harvest/error/HarvestNotExistsError';
+import { SomeCropNotExistsError } from '@modules/crop/error/SomeCropNotExistsError';
+import { CreateRuralPropertieError } from '@modules/rural_propertie/error/CreateRuralPropertieError';
+import { CreateCropsPlantedError } from '@modules/crop/error/CreateCropsPlantedError';
+import { ProducerNotExistsError } from '../error/ProducerNotExistsError';
+import { CpfOrCnpjExistsError } from '../error/CpfOrCnpjExistsError';
+import { RuralPropertieNotExistsError } from '@modules/rural_propertie/error/RuralPropertieNotExistsError';
 
 @ApiTags('producer')
 @Controller('producer')
@@ -74,6 +91,30 @@ export class ProducerController {
     description: 'Returnig producer created on database.',
     type: Producer,
   })
+  @ApiBadRequestResponse({
+    description: ProducerErrorMessages.FAILURE_CRATE_PRODUCER,
+    type: CreateProducerError,
+  })
+  @ApiBadRequestResponse({
+    description: RuralPropertieErrorMessages.ERROR_VALIDATE_AREAS,
+    type: ValidateAreasError,
+  })
+  @ApiBadRequestResponse({
+    description: RuralPropertieErrorMessages.FAILURE_CRATE_PURAL_PROPERTIE,
+    type: CreateRuralPropertieError,
+  })
+  @ApiBadRequestResponse({
+    description: CropErrorMessages.FAILURE_CRATE_CROPS_PLANTED,
+    type: CreateCropsPlantedError,
+  })
+  @ApiNotFoundResponse({
+    description: HarvestErrorMessages.HARVEST_NOT_EXISTS,
+    type: HarvestNotExistsError,
+  })
+  @ApiNotFoundResponse({
+    description: CropErrorMessages.SOME_CROP_NOT_EXISTS,
+    type: SomeCropNotExistsError,
+  })
   async createProducer(
     @Body() createProducer: CreateProducerDTO,
   ): Promise<Producer | ApplicationError> {
@@ -104,6 +145,34 @@ export class ProducerController {
     required: false,
     type: String,
     description: 'Attribute is optional',
+  })
+  @ApiNotFoundResponse({
+    description: ProducerErrorMessages.PRODUCER_NOT_EXISTS,
+    type: ProducerNotExistsError,
+  })
+  @ApiNotFoundResponse({
+    description: RuralPropertieErrorMessages.RURAL_PROPERTIE_NOT_EXISTS,
+    type: RuralPropertieNotExistsError,
+  })
+  @ApiNotFoundResponse({
+    description: HarvestErrorMessages.HARVEST_NOT_EXISTS,
+    type: HarvestNotExistsError,
+  })
+  @ApiNotFoundResponse({
+    description: CropErrorMessages.SOME_CROP_NOT_EXISTS,
+    type: SomeCropNotExistsError,
+  })
+  @ApiBadRequestResponse({
+    description: ProducerErrorMessages.CPF_CNPJ_EXISTS,
+    type: CpfOrCnpjExistsError,
+  })
+  @ApiBadRequestResponse({
+    description: RuralPropertieErrorMessages.ERROR_VALIDATE_AREAS,
+    type: ValidateAreasError,
+  })
+  @ApiBadRequestResponse({
+    description: CropErrorMessages.FAILURE_CRATE_CROPS_PLANTED,
+    type: CreateCropsPlantedError,
   })
   @UsePipes(UUIDQueryParamsPipe)
   async updateProducer(
@@ -136,6 +205,10 @@ export class ProducerController {
   @ApiOkResponse({
     description: 'Returnig if producer deleted with success.',
     type: Boolean,
+  })
+  @ApiNotFoundResponse({
+    description: ProducerErrorMessages.PRODUCER_NOT_EXISTS,
+    type: ProducerNotExistsError,
   })
   async deleteProducer(
     @Param('uuid', new ParseUUIDPipe({ version: '4' })) uuid: string,
