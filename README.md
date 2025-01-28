@@ -17,6 +17,28 @@ Este projeto é a minha proposta de solução a um desafio da Verx Tecnologia. O
 * Zod
 * Entre outros
 
+## Padrões utilizados no projeto
+* Repository pattern
+
+   Padrão de acesso seguro aos dados da aplicação, por meio de uma classe especializada na função, que funciona em conjunto com a entidade de domínio, que modela uma tabela do banco de dados.
+
+* Either pattern
+
+   Padrão de tratamento de erros, onde a aplicação não sobe nenhuma exceção para erros que sejam de conhecimento do domínio. Tornando a aplicação mais performática, segura e escalável. Onde o padrão consiste em retornar as coisas que são de sucesso a direta (Right) e os erros a esquerda (Left). A seguir, segue um diagrama exemplificando:
+
+   <div align="center">
+
+    ![verx-challenge-mer drawio](https://github.com/user-attachments/assets/b970ad6d-fd1a-490f-8b6a-f7ee1fdf6fcc)
+
+  </div>
+
+   Onde os retornos IsRight, indicam para o restante da aplicação que aquele retorno é de sucesso, e que dentro dele vai conter um objeto que faz sentido ser retornado ao requisitante. Enquanto os retornos IsLeft, indicam para o restante da aplicação, que aquele retorno, é de falha, e que dentro dele, deve vai conter um objeto de domínio, que exemplifique o erro, e que o mesmo também deve ser retornado ao requisitante.
+* Optional Pattern
+
+  Padrão para tramento de dados, que se faz de grande uso no ecossistema do Javascript, tendo em vista que valores podem assumir "não valores" como: null, undefined, 0, [], e o padrão Optional normaliza esses dados, simplificando o desenvolvimento de aplicações.
+* SOLID
+* Clean Code
+
 ## Acesso a aplicação em produção
 
 URL da API: https://verx-challenge.onrender.com
@@ -27,9 +49,9 @@ URL da doc da API: https://verx-challenge.onrender.com/docs
 
 ## MER do Banco de dados
 <div align="center">
-  
+
   ![verx-challenge-mer drawio](https://github.com/user-attachments/assets/b970ad6d-fd1a-490f-8b6a-f7ee1fdf6fcc)
-  
+
 </div>
 
 ## Arquitetura do projeto
