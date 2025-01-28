@@ -28,7 +28,7 @@ Este projeto é a minha proposta de solução a um desafio da Verx Tecnologia. O
 
    <div align="center">
 
-    ![verx-challenge-mer drawio](https://github.com/user-attachments/assets/b970ad6d-fd1a-490f-8b6a-f7ee1fdf6fcc)
+    ![either-diagram](https://github.com/user-attachments/assets/da70e24f-241a-4ddb-8d7b-96aaa8811ed4)
 
   </div>
 
