@@ -18,6 +18,21 @@ services:
     networks:
       - verx-challenge
 
+  api:
+    container_name: 'verx-challenge-api'
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/home/api
+    environment:
+      - DB_HOST=database-verx-challenge
+      - DB_PORT=5432
+    depends_on:
+      - database
+    networks:
+      - verx-challenge
+
 networks:
   verx-challenge:
     driver: bridge
