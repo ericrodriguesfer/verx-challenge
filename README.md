@@ -27,7 +27,9 @@ URL da doc da API: https://verx-challenge.onrender.com/docs
 
 ## MER do Banco de dados
 <div align="center">
-  // imagem aqui
+  
+  ![verx-challenge-mer drawio](https://github.com/user-attachments/assets/b970ad6d-fd1a-490f-8b6a-f7ee1fdf6fcc)
+  
 </div>
 
 ## Arquitetura do projeto
@@ -141,7 +143,7 @@ npm install   # Opção 04
 Com isso terá clonado o projeto em sua máquina e instalado todas as dependências necessárias para ele funcionar.
 Agora iremos configurar a parte de infraestrutura do projeto, mas fica tranquilo que estamos utilizando Docker, e isso irá simplificar seu trabalho.
 
-A seguir, deve-se definir um arquivo *.env*, para armazenar os valores, das variáveis de ambiente da aplicação, na raiz do projeto, tem um arquivo chamado *.env.example*, basta seguir o mesmo padrão que está ali, inserir os valores que mais se adequa ao seu uso, que tanto a aplicação quanto os Docker, vai fazer uso desses valores.
+A seguir, deve-se definir um arquivo *.env*, para armazenar os valores, das variáveis de ambiente da aplicação, na raiz do projeto, tem um arquivo chamado *.env.example*, basta seguir o mesmo padrão que está ali, inserir os valores que mais se adequa ao seu uso, que tanto a aplicação quanto o Docker, vai fazer uso desses valores.
 
 Para executar o projeto, execute o seguinte comando:
 
